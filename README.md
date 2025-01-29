@@ -1,5 +1,5 @@
 # 🏌️ Ubisoft NEXT Programming Challenge 2025 - Mini Golf Game
-
+![plot](./ReadMeData/SamplePlay.gif)
 ## 📺 YouTube Showcase
 🎥 Watch Gameplay Demo: [YouTube Link](https://youtu.be/ENdJ8lNCyjQ)
 
