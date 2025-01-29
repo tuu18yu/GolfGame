@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="GameTest.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="App\app.cpp">
+      <Filter>API</Filter>
+    </ClCompile>
+    <ClCompile Include="App\main.cpp">
+      <Filter>API</Filter>
+    </ClCompile>
+    <ClCompile Include="App\SimpleController.cpp">
+      <Filter>API</Filter>
+    </ClCompile>
+    <ClCompile Include="App\SimpleSound.cpp">
+      <Filter>API</Filter>
+    </ClCompile>
+    <ClCompile Include="App\SimpleSprite.cpp">
+      <Filter>API</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image\stb_image.cpp">
+      <Filter>API\third_party\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="miniaudio\miniaudio.cpp">
+      <Filter>API\third_party\miniaudio</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vec2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vec3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Mat3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Mat4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Triangle.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Mesh.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\MemoryPool.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\MouseContoller.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\Scene.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Renderer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\Utils.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Square.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\AABBTree.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Particle.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\SceneGolf.cpp">
+      <Filter>ECS\SceneGolf</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\SceneGolfEntity.cpp">
+      <Filter>ECS\SceneGolf</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\SceneGolfPhysics.cpp">
+      <Filter>ECS\SceneGolf</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\SceneGolfCollision.cpp">
+      <Filter>ECS\SceneGolf</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\SceneGolfHandleInput.cpp">
+      <Filter>ECS\SceneGolf</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\SceneGolfUI.cpp">
+      <Filter>ECS\SceneGolf</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\SceneGolfRender.cpp">
+      <Filter>ECS\SceneGolf</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="App\app.h">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\AppSettings.h">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\main.h">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\SimpleController.h">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\SimpleSound.h">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="App\SimpleSprite.h">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>API</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image\stb_image.h">
+      <Filter>API\third_party\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="miniaudio\miniaudio.h">
+      <Filter>API\third_party\miniaudio</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Mat4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vec2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vec3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Mat3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Mesh.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Triangle.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\MemoryPool.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\Component.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\EntityManager.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\MouseContoller.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Renderer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Utils.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Square.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\AABBTree.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\Scene.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Particle.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\SceneGolf.h">
+      <Filter>ECS\SceneGolf</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="API">
+      <UniqueIdentifier>{f318918d-bb9f-4402-ae1c-4f72186d16f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\third_party">
+      <UniqueIdentifier>{27bd8d9d-bd08-4004-9045-4e86e26c901f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\third_party\miniaudio">
+      <UniqueIdentifier>{957ea575-fd4f-4ede-b4f9-66b4022639a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API\third_party\stb_image">
+      <UniqueIdentifier>{61cfc19b-c57e-4021-b530-bac172fcba86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{9447bb55-b3d3-4363-9022-a153d584a34a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{177e2b89-e063-4dfa-9470-0fded983e88d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS">
+      <UniqueIdentifier>{f39e9b15-6b32-4011-89df-44519427afd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{2d95f6c7-6042-4da8-b4a4-451b33f1cca2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{82605a01-ad0d-4def-82ff-cf4939066e67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{47c0b91e-8b72-4157-b171-db0a49778720}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\SceneGolf">
+      <UniqueIdentifier>{03c88214-78ad-46ea-9810-31735c1354db}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>API</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
