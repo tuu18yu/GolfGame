@@ -62,7 +62,7 @@ The provided API supports only fundamental functionalities, including:
  6. Frustum Culling: Skip coordinates outside the range of -1 to 1
  7. Viewport Transformation: Scale and transform the points between -1 to 1 to fit the actual screen
  8. Triangle Rasterization: Using ambient + di use lighting to determine the colour of each triangle and colour the triangle
- 9. 
+
 ### 🎨 Rasterization
 - **Implemented in Graphics/Renderer.cpp**
 - **Scanline Method**: Renders triangles by interpolating values along the **y-axis**.
