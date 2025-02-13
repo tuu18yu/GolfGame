@@ -54,14 +54,15 @@ The provided API supports only fundamental functionalities, including:
 
 ### 3D Graphics Pipeline
 - **Implemented in Graphics/Renderer.cpp**
- 1. **Affine Transformations**: Scale, Translate, and Rotate coordinates in object space.
- 2. **Backface Culling**: Using the direction of the camera forward and position, skip coordinates at the back
- 3. **View Matrix Transformation**: Converts coordinates into camera view space.
- 4. **Perspective Transformation**: Changes coordinates into a frustum, making objects appear larger when closer.
- 5. **Orthographic Transformation**: Converts coordinates into a normalized clip space between -1 and 1 (NDC).
- 6. **Frustum Culling**: Skip coordinates outside the range of -1 to 1
- 7. **Viewport Transformation**: Scale and transform the points between -1 to 1 to fit the actual screen
- 8. **Triangle Rasterization**: Using ambient + di use lighting to determine the colour of each triangle and colour the triangle
+ 1. **Frustum Culling (Using BVH)**: Traverse the BVH and remove objects outside the frustum before rendering
+ 2. **Affine Transformations**: Scale, Translate, and Rotate coordinates in object space.
+ 3. **Backface Culling**: Using the direction of the camera forward and position, skip coordinates at the back
+ 4. **View Matrix Transformation**: Converts coordinates into camera view space.
+ 5. **Perspective Transformation**: Changes coordinates into a frustum, making objects appear larger when closer.
+ 6. **Orthographic Transformation**: Converts coordinates into a normalized clip space between -1 and 1 (NDC).
+ 7. **Frustum Culling**: Skip coordinates outside the range of -1 to 1
+ 8. **Viewport Transformation**: Scale and transform the points between -1 to 1 to fit the actual screen
+ 9. **Triangle Rasterization**: Using ambient + di use lighting to determine the colour of each triangle and colour the triangle
 
 ### Rasterization
 - **Implemented in Graphics/Renderer.cpp**
