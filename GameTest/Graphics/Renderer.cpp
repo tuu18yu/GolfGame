@@ -65,7 +65,7 @@ void Renderer::Draw(Camera camera, const Mesh &mesh, bool wireFrameOn) const
 		{
 			// View Transformation: World Space -> View Space
 			Mat4 matView;
-			matView.PointAt(camera.pos, target, { 0.0f, 1.0f, 0.0f });
+			matView.PointAt(camera.pos, camera.forward, camera.up);
 			triProjected *= matView;
 
 			//Projection Transformation: View Space -> Clip Space
@@ -545,6 +545,59 @@ void Renderer::Fill(const Square& square) const
 
 		// Draw the horizontal line
 		App::DrawLine(xLeft, y, xRight, y, r, g, b);
+	}
+}
+
+void Renderer::ExtractFrustum(Frustum& frustum, const Camera camera) const
+{
+	Mat4 viewProj, camProj;
+	// View Transformation: World Space -> View Space
+	camProj.PointAt(camera.pos, camera.forward, camera.up);
+	viewProj.Projection(m_fovAngle, float(WINDOW_WIDTH), float(WINDOW_HEIGHT), m_near, m_far);
+
+	viewProj = viewProj * camProj;
+
+	// Left Plane: row3 + row0
+	frustum.planes[0].normal.x = viewProj.matrix[3] + viewProj.matrix[0];
+	frustum.planes[0].normal.y = viewProj.matrix[7] + viewProj.matrix[4];
+	frustum.planes[0].normal.z = viewProj.matrix[11] + viewProj.matrix[8];
+	frustum.planes[0].distance = viewProj.matrix[15] + viewProj.matrix[12];
+
+	// Right Plane: row3 - row0
+	frustum.planes[1].normal.x = viewProj.matrix[3] - viewProj.matrix[0];
+	frustum.planes[1].normal.y = viewProj.matrix[7] - viewProj.matrix[4];
+	frustum.planes[1].normal.z = viewProj.matrix[11] - viewProj.matrix[8];
+	frustum.planes[1].distance = viewProj.matrix[15] - viewProj.matrix[12];
+
+	// Bottom Plane: row3 + row1
+	frustum.planes[2].normal.x = viewProj.matrix[3] + viewProj.matrix[1];
+	frustum.planes[2].normal.y = viewProj.matrix[7] + viewProj.matrix[5];
+	frustum.planes[2].normal.z = viewProj.matrix[11] + viewProj.matrix[9];
+	frustum.planes[2].distance = viewProj.matrix[15] + viewProj.matrix[13];
+
+	// Top Plane: row3 - row1
+	frustum.planes[3].normal.x = viewProj.matrix[3] - viewProj.matrix[1];
+	frustum.planes[3].normal.y = viewProj.matrix[7] - viewProj.matrix[5];
+	frustum.planes[3].normal.z = viewProj.matrix[11] - viewProj.matrix[9];
+	frustum.planes[3].distance = viewProj.matrix[15] - viewProj.matrix[13];
+
+	// Near Plane: row3 + row2
+	frustum.planes[4].normal.x = viewProj.matrix[3] + viewProj.matrix[2];
+	frustum.planes[4].normal.y = viewProj.matrix[7] + viewProj.matrix[6];
+	frustum.planes[4].normal.z = viewProj.matrix[11] + viewProj.matrix[10];
+	frustum.planes[4].distance = viewProj.matrix[15] + viewProj.matrix[14];
+
+	// Far Plane: row3 - row2
+	frustum.planes[5].normal.x = viewProj.matrix[3] - viewProj.matrix[2];
+	frustum.planes[5].normal.y = viewProj.matrix[7] - viewProj.matrix[6];
+	frustum.planes[5].normal.z = viewProj.matrix[11] - viewProj.matrix[10];
+	frustum.planes[5].distance = viewProj.matrix[15] - viewProj.matrix[14];
+
+	// Normalize plane normals
+	for (int i = 0; i < 6; i++) {
+		float length = frustum.planes[i].normal.getLength();
+		frustum.planes[i].normal = frustum.planes[i].normal / length;
+		frustum.planes[i].distance /= length;
 	}
 }
 

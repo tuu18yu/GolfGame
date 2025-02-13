@@ -35,6 +35,14 @@ struct AABB
 
     }
 
+    Vec3 getCorner(int i) const
+    {
+        return Vec3(
+            (i & 1) ? max_corner.x : min_corner.x,
+            (i & 2) ? max_corner.y : min_corner.y,
+            (i & 4) ? max_corner.z : min_corner.z
+        );
+    }
 
     inline bool intersects(const AABB& other) const
     {
@@ -45,6 +53,38 @@ struct AABB
 
     bool intersects(const Ray& ray, float& tMin, float& tMax) const;
 
+};
+
+struct Plane
+{
+    Vec3 normal;
+    float distance;
+
+    bool isInside(const Vec3& point) const 
+    {
+        return normal.dot_product(point) + distance >= 0;
+    }
+};
+
+struct Frustum
+{
+    Plane planes[6];
+
+    // Check if an AABB is inside the frustum
+    bool isInside(const AABB& aabb) const {
+        for (const auto& plane : planes) {
+            // Check if all 8 corners of the AABB are outside this plane
+            bool outside = true;
+            for (int i = 0; i < 8; i++) {
+                if (plane.isInside(aabb.getCorner(i))) {
+                    outside = false;
+                    break;
+                }
+            }
+            if (outside) return false;
+        }
+        return true;
+    }
 };
 
 
@@ -83,6 +123,7 @@ private:
     void updateAABB(size_t currNodeIndex);
 
     bool rayCastRecursive(size_t nodeIndex, const Ray& ray, size_t& closestEntityID, float& closestT, const size_t entityShootingFrom) const;
+    void frustumCullingRecursive(const Frustum& frustum, std::vector<size_t>& visibleEntities, size_t nodeIndex) const;
 
 public:
     std::vector<BVHNode> nodes;
@@ -115,6 +156,7 @@ public:
     void RemoveEntity(size_t nodeIndex, const EntityManager& em); // O(log n)
     void UpdateEntityPosition(size_t entityID, const EntityManager& em); // O(log n)
     bool RayCast(const Ray& ray, size_t& closestEntityID, float& closestT, const size_t entityShootingFrom = -1) const;
+    void FrustumCulling(const Frustum& frustum, std::vector<size_t>& visibleEntities) const;
 
     void Clear();
 };

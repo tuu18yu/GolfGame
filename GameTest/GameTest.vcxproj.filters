@@ -45,9 +45,6 @@
     <ClCompile Include="ECS\MemoryPool.cpp">
       <Filter>ECS</Filter>
     </ClCompile>
-    <ClCompile Include="Controller\MouseContoller.cpp">
-      <Filter>Controller</Filter>
-    </ClCompile>
     <ClCompile Include="ECS\Scene.cpp">
       <Filter>ECS</Filter>
     </ClCompile>
@@ -143,9 +140,6 @@
     </ClInclude>
     <ClInclude Include="ECS\EntityManager.h">
       <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="Controller\MouseContoller.h">
-      <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\Renderer.h">
       <Filter>Graphics</Filter>

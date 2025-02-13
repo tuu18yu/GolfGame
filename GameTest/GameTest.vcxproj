@@ -186,7 +186,6 @@
     <ClInclude Include="App\SimpleController.h" />
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
-    <ClInclude Include="Controller\MouseContoller.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\EntityManager.h" />
     <ClInclude Include="ECS\MemoryPool.h" />
@@ -214,7 +213,6 @@
     <ClCompile Include="App\SimpleController.cpp" />
     <ClCompile Include="App\SimpleSound.cpp" />
     <ClCompile Include="App\SimpleSprite.cpp" />
-    <ClCompile Include="Controller\MouseContoller.cpp" />
     <ClCompile Include="ECS\MemoryPool.cpp" />
     <ClCompile Include="ECS\Scene.cpp" />
     <ClCompile Include="ECS\SceneGolf.cpp" />

@@ -116,5 +116,4 @@ int TriangleClipAgainstPlane(Vec3 const& P_point, Vec3 const& P_normal, Triangle
 
 		return 2;
 	}
-
 }

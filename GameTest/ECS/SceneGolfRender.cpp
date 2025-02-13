@@ -1,11 +1,19 @@
 #include "stdafx.h"
 #include "SceneGolf.h"
 #include "App/app.h"
+#include <algorithm>
 
 void SceneGolf::drawEntities() const
 {
-	std::vector<int> indicies;
-	for (int i = 0; i < MAX_ENTITIES; i++)
+	std::vector<size_t> indicies;
+	std::vector<size_t> visibleEntities;
+
+	Frustum frustum;
+	renderer.ExtractFrustum(frustum, camera);
+
+	m_entityManager.getBVH().FrustumCulling(frustum, visibleEntities);
+
+	for (auto &i: visibleEntities)
 	{
 		CMesh cmesh = m_entityManager.getComponentVector<CMesh>()[i];
 		CTransform trans = m_entityManager.getComponentVector<CTransform>()[i];
@@ -29,7 +37,7 @@ void SceneGolf::drawEntities() const
 
 	// Sort triangle in order of z, z is ordered based on average z value
 	// if z is the same sort type ball first -> changed to sorting by forward vector
-	std::sort(indicies.begin(), indicies.end(), [&](int i1, int i2)
+	std::sort(indicies.begin(), indicies.end(), [&](size_t i1, size_t i2)
 		{
 			Vec3 forward = (camera.forward - camera.pos).normalize();
 

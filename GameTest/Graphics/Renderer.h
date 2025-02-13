@@ -43,4 +43,6 @@ public:
 
 	void Fill(const Triangle& triangle) const;
 	void Fill(const Square& square) const;
+
+	void ExtractFrustum(Frustum& frustum, const Camera camera) const;
 };

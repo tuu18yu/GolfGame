@@ -73,10 +73,7 @@ bool BVH::rayCastRecursive(size_t nodeIndex, const Ray& ray, size_t& closestEnti
     float tMin, tMax;
 
     // skip this node if the ray doesn't intersect
-    if (!node.aabb.intersects(ray, tMin, tMax) || tMin > closestT)
-    {
-        return false;
-    }
+    if (!node.aabb.intersects(ray, tMin, tMax) || tMin > closestT) return false;
 
     // if the ray hits aabb, check if it's a node
     if (node.isLeaf())
@@ -99,7 +96,31 @@ bool BVH::rayCastRecursive(size_t nodeIndex, const Ray& ray, size_t& closestEnti
     return hitLeft || hitRight;
 }
 
+void BVH::FrustumCulling(const Frustum& frustum, std::vector<size_t>& visibleEntities) const
+{
+    return frustumCullingRecursive(frustum, visibleEntities, m_root);
+}
 
+void BVH::frustumCullingRecursive(const Frustum& frustum, std::vector<size_t>& visibleEntities, size_t nodeIndex) const
+{
+    if (nodeIndex == -1) return;
+
+    const BVHNode& node = nodes[nodeIndex];
+
+    // skip this node if the ray doesn't intersect
+    if (!frustum.isInside(node.aabb)) return;
+
+    // if leaf(or entity) in the frustum add to visibleEntitites
+    if (node.isLeaf())
+    {
+        visibleEntities.push_back(node.ID);
+        return;
+    }
+
+    // Recursively check children
+    frustumCullingRecursive(frustum, visibleEntities, node.left);
+    frustumCullingRecursive(frustum, visibleEntities, node.right);
+}
 
 int BVH::longestAxis(AABB aabb)
 {
@@ -384,8 +405,6 @@ void BVH::updateAABB(size_t currNodeIndex) {
         updateAABB(node.parent);
     }
 }
-
-
 
 void BVH::Clear()
 {
