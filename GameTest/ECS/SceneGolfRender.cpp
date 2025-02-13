@@ -13,6 +13,7 @@ void SceneGolf::drawEntities() const
 
 	m_entityManager.getBVH().FrustumCulling(frustum, visibleEntities);
 
+	//for (int i = 0; i < MAX_ENTITIES; i++)
 	for (auto &i: visibleEntities)
 	{
 		CMesh cmesh = m_entityManager.getComponentVector<CMesh>()[i];
@@ -26,12 +27,13 @@ void SceneGolf::drawEntities() const
 			float dot = trans.pos.dot_product(forward);
 			float dot2 = currBallTrans.pos.dot_product(forward);
 
+			indicies.push_back(i);
 			// only render entities that are further than the current ball
 			// add some padding to draw some blocks that are slightly behind the camera
-			if (dot + 1.0f >= dot2)
+			/*if (dot + 1.0f >= dot2)
 			{
 				indicies.push_back(i);
-			}
+			}*/
 		}
 	}
 
