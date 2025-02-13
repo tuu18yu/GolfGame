@@ -77,6 +77,8 @@ The provided API supports only fundamental functionalities, including:
 - **Built Bottom-Up**: Divides the tree using **the median of the longest axis**.
 - **Optimized for Static Objects**: Avoids **worst-case n-length tree**.
 - **Collision Detection Complexity**: Improved from **O(n) → O(log n)**.
+- **Frustum Culling**: Improved from 50ms to 3ms per update
+![plot](./ReadMeData/BVH_comparison.png)
 - **Memory Optimization**:
   - **Pre-allocates** BVH nodes.
   - **Reuses deleted node positions** to avoid **memory fragmentation**.
